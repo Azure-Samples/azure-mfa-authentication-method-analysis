@@ -1,53 +1,51 @@
 ---
 page_type: sample
 languages:
-- csharp
+- powershell
 products:
-- dotnet
-description: "Add 150 character max description"
-urlFragment: "update-this-to-unique-url-stub"
+- azure-active-directory
+description: "Analyses Azure AD users to make recommendations on how to improve each user's MFA configuration."
+urlFragment: "azure-mfa-authentication-method-analysis"
 ---
 
-# Official Microsoft Sample
+# Script for Azure MFA authentication method analysis
 
-<!-- 
-Guidelines on README format: https://review.docs.microsoft.com/help/onboard/admin/samples/concepts/readme-template?branch=master
+This sample script analyses Azure AD users to make recommendations on how to improve each user's MFA configuration.
 
-Guidance on onboarding samples to docs.microsoft.com/samples: https://review.docs.microsoft.com/help/onboard/admin/samples/process/onboarding?branch=master
+You can target a group by *ObjectId* or analyse all users in a tenant. The following user-specific location information can be targeted: UPN domain, usage location and country. You can also produce a date and time stamped CSV report of per user recommendations.
 
-Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
--->
+Use `-Verbose` for insight into the script's activities.
 
-Give a short description for your sample here. What does it do and why is it important?
+## Limitations and requirements
 
-## Contents
+* You can't use a guest (B2B) account to run this script against the target tenant. The script will execute in the guest's home tenant, not the target tenant.
+* Ensure you run the script with an account that can enumerate user properties.
 
-Outline the file contents of the repository. It helps users navigate the codebase, build configuration and any related assets.
+## Examples
 
-| File/folder       | Description                                |
-|-------------------|--------------------------------------------|
-| `src`             | Sample source code.                        |
-| `.gitignore`      | Define what to ignore at commit time.      |
-| `CHANGELOG.md`    | List of changes to the sample.             |
-| `CONTRIBUTING.md` | Guidelines for contributing to the sample. |
-| `README.md`       | This README file.                          |
-| `LICENSE`         | The license for the sample.                |
+Creates per user recommendations for all users in the target tenant and displays the results to screen:
 
-## Prerequisites
+```powershell
+.\MfaAuthMethodAnalysis.ps1 -TenantId 9959f32b-837b-41db-b6e5-32277e344292
+```
 
-Outline the required components and tools that a user might need to have on their machine in order to run the sample. This can be anything from frameworks, SDKs, OS versions or IDE releases.
+Creates per user recommendations for each user in the target group and displays the results to screen:
 
-## Setup
+```powershell
+.\MfaAuthMethodAnalysis.ps1 -TenantId 9959f32b-837b-41db-b6e5-32277e344292 -TargetGroup 6424cd24-ee16-472f-bad6-85427c9febc2
+```
 
-Explain how to prepare the sample once the user clones or downloads the repository. The section should outline every step necessary to install dependencies and set up any settings (for example, API keys and output folders).
+Creates a date and time stamped CSV file in the scripts execution directory with per user recommendations for all users in the tenant. Has verbose notation to screen:
 
-## Running the sample
+```powershell
+.\MfaAuthMethodAnalysis.ps1 -TenantId 9959f32b-837b-41db-b6e5-32277e344292 -CsvOutput -Verbose
+```
 
-Outline step-by-step instructions to execute the sample and see its output. Include steps for executing the sample from the IDE, starting specific services in the Azure portal or anything related to the overall launch of the code.
+Creates a date and time stamped CSV file in the scripts execution directory with per user recommendations for all users in the tenant. Includes location information: UPN domain, usage location and country:
 
-## Key concepts
-
-Provide users with more context on the tools and services used in the sample. Explain some of the code that is being used and how services interact with each other.
+```powershell
+.\MfaAuthMethodAnalysis.ps1 -TenantId 9959f32b-837b-41db-b6e5-32277e344292 -LocationInfo -CsvOutput
+```
 
 ## Contributing
 
