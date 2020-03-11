@@ -25,7 +25,7 @@
       limitation of the MSOnline PowerShell module. The script will execute in the guest's home tenant,
       not the target tenant.
 
-    * Ensure you run the script with an account that can enumurate user properties. For least privilege 
+    * Ensure you run the script with an account that can enumerate user properties. For least privilege 
       use the User Administrator role.
 
 
