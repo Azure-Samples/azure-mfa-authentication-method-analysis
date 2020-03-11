@@ -19,7 +19,7 @@ Use `-Verbose` for insight into the script's activities.
 ## Limitations and requirements
 
 * You can't use a guest (B2B) account to run this script against the target tenant. The script will execute in the guest's home tenant, not the target tenant.
-* Ensure you run the script with an account that can enumerate user properties.
+* Ensure you run the script with an account that can enumurate user properties. For least privilege use the User Administrator role.
 
 ## Examples
 
