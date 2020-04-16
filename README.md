@@ -26,25 +26,25 @@ Use `-Verbose` for insight into the script's activities.
 Creates per user recommendations for all users in the target tenant and displays the results to screen:
 
 ```powershell
-.\MfaAuthMethodAnalysis.ps1 -TenantId 9959f32b-837b-41db-b6e5-32277e344292
+.\MfaAuthMethodsAnalysis.ps1 -TenantId 9959f32b-837b-41db-b6e5-32277e344292
 ```
 
 Creates per user recommendations for each user in the target group and displays the results to screen:
 
 ```powershell
-.\MfaAuthMethodAnalysis.ps1 -TenantId 9959f32b-837b-41db-b6e5-32277e344292 -TargetGroup 6424cd24-ee16-472f-bad6-85427c9febc2
+.\MfaAuthMethodsAnalysis.ps1 -TenantId 9959f32b-837b-41db-b6e5-32277e344292 -TargetGroup 6424cd24-ee16-472f-bad6-85427c9febc2
 ```
 
 Creates a date and time stamped CSV file in the scripts execution directory with per user recommendations for all users in the tenant. Has verbose notation to screen:
 
 ```powershell
-.\MfaAuthMethodAnalysis.ps1 -TenantId 9959f32b-837b-41db-b6e5-32277e344292 -CsvOutput -Verbose
+.\MfaAuthMethodsAnalysis.ps1 -TenantId 9959f32b-837b-41db-b6e5-32277e344292 -CsvOutput -Verbose
 ```
 
 Creates a date and time stamped CSV file in the scripts execution directory with per user recommendations for all users in the tenant. Includes location information: UPN domain, usage location and country:
 
 ```powershell
-.\MfaAuthMethodAnalysis.ps1 -TenantId 9959f32b-837b-41db-b6e5-32277e344292 -LocationInfo -CsvOutput
+.\MfaAuthMethodsAnalysis.ps1 -TenantId 9959f32b-837b-41db-b6e5-32277e344292 -LocationInfo -CsvOutput
 ```
 
 ## Contributing
