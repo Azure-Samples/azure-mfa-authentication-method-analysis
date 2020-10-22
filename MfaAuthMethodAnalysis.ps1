@@ -132,6 +132,8 @@ function Analyse-MsolUserStrongAuthMethods {
     #Set user properties
     $UserPrincipalName = $_.UserPrincipalName
     $DisplayName = $_.DisplayName
+    $AuthPhone = $_.StrongAuthenticationUserDetails.PhoneNumber
+    $AltAuthPhone = $_.StrongAuthenticationUserDetails.AlternativePhoneNumber
     [string]$ObjectId = $_.ObjectId
 
     if ($LocationInfo) {
@@ -263,6 +265,8 @@ function Analyse-MsolUserStrongAuthMethods {
             Sms = $Sms
             Phone = $Phone
             AltPhone = $AltPhone
+            AuthPhone = $AuthPhone 
+            AltAuthPhone = $AltAuthPhone
             Recommendations = $Recommendations
 
         }
@@ -282,6 +286,8 @@ function Analyse-MsolUserStrongAuthMethods {
             Sms = $Sms
             Phone = $Phone
             AltPhone = $AltPhone
+            AuthPhone = $AuthPhone 
+            AltAuthPhone = $AltAuthPhone
             Recommendations = $Recommendations
 
         }
@@ -472,13 +478,13 @@ if ($DomainInfo) {
         #Create file with header
         if ($LocationInfo) {
 
-            Add-Content -Value "UserPrincipalName,DisplayName,ObjectId,UpnDomain,UsageLocation,Country,MfaAuthMethodCount,DefaultMethod,AppNotification,OathTotp,Sms,Phone,AltPhone,Recommendations" `
+            Add-Content -Value "UserPrincipalName,DisplayName,ObjectId,UpnDomain,UsageLocation,Country,MfaAuthMethodCount,DefaultMethod,AppNotification,OathTotp,Sms,Phone,AltPhone,AuthPhone,AltAuthPhone,Recommendations" `
                         -Path $OutputFile
 
         }
         else {
 
-            Add-Content -Value "UserPrincipalName,DisplayName,ObjectId,MfaAuthMethodCount,DefaultMethod,AppNotification,OathTotp,Sms,Phone,AltPhone,Recommendations" `
+            Add-Content -Value "UserPrincipalName,DisplayName,ObjectId,MfaAuthMethodCount,DefaultMethod,AppNotification,OathTotp,Sms,Phone,AltPhone,AuthPhone,AltAuthPhone,Recommendations" `
                         -Path $OutputFile
 
         }
